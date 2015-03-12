@@ -1,38 +1,31 @@
 # Assignment 2 - Question 6.
-#
 # Compare emissions from motor vehicle sources in
-#   Baltimore City (fips == "24510")
+# Baltimore City (fips == "24510")
 # with emissions from motor vehicle sources in 
-#   Los Angeles County, California (fips == "06037"). 
-#
+# Los Angeles County, California (fips == "06037"). 
+# Load libraries
+library("ggplot2")
 
 # Load datasets as needed
 # This data set will likely take a few seconds. Be patient!
 
 loaded <- (exists("NEI") && is.data.frame(get("NEI")))
-
 if (!loaded) {
-  print ("Loading NEI dataset .. Please stand by")
+  print ("Loading NEI .. Please be patient! ")
   NEI <- readRDS("summarySCC_PM25.rds")
 }
-
 loaded <- (exists("SCC") && is.data.frame(get("SCC")))
-
 if (!loaded) {
-  print ("Loading SCC dataset .. Please stand by")
+  print ("Loading SCC dataset .. Please be patient! ")
   SCC <- readRDS("Source_Classification_Code.rds")
 }
 
 # Summarize Data
 
-print ("Subsetting & Aggregating Data Totals .. Please stand by")
-
 NEIbaltimore  <- NEI[which(NEI$fips == "24510") , ]
 NEIlosAngeles <- NEI[which(NEI$fips == "06037") , ]
-
 NEIbaltimore$city  <- "Baltimore City"
 NEIlosAngeles$city <- "Los Angeles County"
-
 combinedNEI <- rbind(NEIbaltimore, NEIlosAngeles)
 
 # Generate Plot

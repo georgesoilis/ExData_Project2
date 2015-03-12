@@ -1,29 +1,24 @@
 # Assignment 2 - Question 4.
-#
 # Across the United States, how have emissions from coal 
 # combustion-related sources changed from 1999-2008?
-#
+# Load libraries
+library("ggplot2")
 
 # Load datasets as needed
 # This data set will likely take a few seconds. Be patient!
 
 loaded <- (exists("NEI") && is.data.frame(get("NEI")))
-
 if (!loaded) {
-  print ("Loading NEI dataset .. Please stand by")
+  print ("Loading NEI .. Please be patient! ")
   NEI <- readRDS("summarySCC_PM25.rds")
 }
-
 loaded <- (exists("SCC") && is.data.frame(get("SCC")))
-
 if (!loaded) {
-  print ("Loading SCC dataset .. Please stand by")
+  print ("Loading SCC dataset .. Please be patient! ")
   SCC <- readRDS("Source_Classification_Code.rds")
 }
 
 # Summarize Data
-
-print ("Subsetting & Aggregating Data Totals .. Please stand by")
 
 combustionRelated <- grepl( "comb", SCC$SCC.Level.One, ignore.case=TRUE)
 coalRelated <- grepl( "coal", SCC$SCC.Level.Four, ignore.case=TRUE)
