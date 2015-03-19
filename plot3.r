@@ -39,4 +39,4 @@ qplot(year, Emissions, data = baltimore.type,
       geom = c("point", "line") , 
       xlab = "Year", ylab = expression("Total Emissions, PM"[2.5] ) ,
       main = "Total Emissions in Baltimore by Type of Pollutant")
-ggsave("plot3.png")
+ggsave("plot3.png",width = 7, height = 3)
